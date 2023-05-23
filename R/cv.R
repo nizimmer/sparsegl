@@ -78,6 +78,7 @@ cv.sparsegl <- function(
   ###Fit the model once to get dimensions etc of output
   y <- drop(y)
   sparsegl.object <- sparsegl(x, y, group, lambda = lambda, family = family,
+                              weights = weights, offset = offset,
                               ...)
   lambda <- sparsegl.object$lambda
   # predict -> coef
