@@ -10,6 +10,8 @@ cv.sparsegl(
   group = NULL,
   family = c("gaussian", "binomial"),
   lambda = NULL,
+  weights = NULL,
+  offset = NULL,
   pred.loss = c("default", "mse", "deviance", "mae", "misclass"),
   nfolds = 10,
   foldid = NULL,
@@ -52,6 +54,13 @@ this behaviour. It is likely better to supply a
 decreasing sequence of \code{lambda} values than a single (small) value. If
 supplied, the user-defined \code{lambda} sequence is automatically sorted in
 decreasing order.}
+
+\item{weights}{Double vector. Optional observation weights. These can
+only be used with a \code{\link[stats:family]{stats::family()}} object.}
+
+\item{offset}{Double vector. Optional offset (constant predictor without a
+corresponding coefficient). These can only be used with a
+\code{\link[stats:family]{stats::family()}} object.}
 
 \item{pred.loss}{Loss to use for cross-validation error. Valid options are:
 \itemize{

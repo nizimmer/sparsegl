@@ -64,7 +64,7 @@
 #'
 cv.sparsegl <- function(
     x, y, group = NULL, family = c("gaussian", "binomial"),
-    lambda = NULL,
+    lambda = NULL, weights = NULL, offset = NULL,
     pred.loss = c("default", "mse", "deviance", "mae", "misclass"),
     nfolds = 10, foldid = NULL, ...) {
 
@@ -92,7 +92,10 @@ cv.sparsegl <- function(
     test_fold <- foldid == i
     outlist[[i]] <- sparsegl(
       x = x[!test_fold, , drop = FALSE],
-      y = y[!test_fold], group = group, lambda = lambda, family = family,
+      y = y[!test_fold], 
+      weights = weights[!test_fold],
+      offset = offset[!test_fold],
+      group = group, lambda = lambda, family = family,
       ...)
   }
   ###What to do depends on the pred.loss and the model fit
